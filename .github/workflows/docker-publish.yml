@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -28,7 +28,7 @@ jobs:
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v4
         with:
           images: oliviawan65/dsci522-dockerfile-practice
           tags: |
@@ -36,7 +36,7 @@ jobs:
             type=raw, value=latest
       
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
